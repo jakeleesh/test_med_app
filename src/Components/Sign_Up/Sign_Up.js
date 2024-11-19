@@ -18,7 +18,7 @@ const Sign_Up = () => {
     const register = async (e) => {
         e.preventDefault(); // Prevent default form submission
 
-        if (phone.length != 10) {
+        if (phone.length !== 10) {
             setShowerr({ phone: 'Phone number is only 10 digits.' });
             return;
         }
@@ -72,12 +72,29 @@ const Sign_Up = () => {
                             {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
                         </div>
                         {/* Apply similar logic for other form elements like name, phone, and password to capture user information */}
+                        <div className="form-group">
+                            <label htmlFor="name">Name</label>
+                            <input value={name} type="text" onChange={(e) => setName(e.target.value)} name="name" id="name" className="form-control" placeholder="Enter your name" aria-describedby="helpId" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="phone">Phone</label>
+                            <input value={phone} onChange={(e) => setPhone(e.target.value)} type="tel" name="phone" id="phone" className="form-control" placeholder="Enter your phone number" aria-describedby="helpId" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password">Password</label>
+                            <input value={password} onChange={(e) => setPassword(e.target.value)} name="password" id="password" className="form-control" placeholder="Enter your password" aria-describedby="helpId" />
+                        </div>
+                        <div className="btn-group">
+                            <button type="submit" className="btn btn-primary mb-2 mr-1 waves-effect waves-light">
+                            Sign Up
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
-        {/* Note: Sign up role is not stored in the database. Additional logic can be implemented for this based on your React code. */}
-    );
+        // Note: Sign up role is not stored in the database. Additional logic can be implemented for this based on your React code.
+    )
 }
 
 export default Sign_Up; // Export the Sign_Up component for use in other components
